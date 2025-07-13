@@ -19,35 +19,58 @@
       justify-content: center;
       text-align: center;
       cursor: pointer;
-      user-select: none; /* ⚠️ Ngăn chọn văn bản */
+      user-select: none;
+      flex-direction: column;
+      gap: 20px;
     }
     h1 {
       font-size: 15vw;
       color: #ff3c00;
       line-height: 1.2;
     }
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #ff3c00;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body ondblclick="toggleFullscreen()">
   <h1>SUN.WIN<br>GEM.WIN</h1>
+  <button id="toggleFireworksBtn">Bật pháo hoa</button>
+
+  <!-- 🔗 Liên kết tới fireworks.js -->
+  <script src="fireworks.js"></script>
 
   <script>
     function toggleFullscreen() {
       const elem = document.documentElement;
       if (!document.fullscreenElement) {
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
-        }
+        elem.requestFullscreen?.();
+        elem.webkitRequestFullscreen?.();
+        elem.msRequestFullscreen?.();
       } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
+        document.exitFullscreen?.();
       }
     }
+
+    // Toggle hiệu ứng pháo hoa
+    let fireworksOn = false;
+    const btn = document.getElementById('toggleFireworksBtn');
+    btn.addEventListener('click', () => {
+      fireworksOn = !fireworksOn;
+      if (fireworksOn) {
+        startFireworks(); // gọi từ fireworks.js
+        btn.textContent = 'Tắt pháo hoa';
+      } else {
+        stopFireworks(); // gọi từ fireworks.js
+        btn.textContent = 'Bật pháo hoa';
+      }
+    });
   </script>
 </body>
 </html>
