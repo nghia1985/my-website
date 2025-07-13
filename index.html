@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUN.WIN - GEM.WIN</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      user-select: none; /* ⚠️ Ngăn chọn văn bản */
+    }
+    h1 {
+      font-size: 15vw;
+      color: #ff3c00;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body ondblclick="toggleFullscreen()">
+  <h1>SUN.WIN<br>GEM.WIN</h1>
+
+  <script>
+    function toggleFullscreen() {
+      const elem = document.documentElement;
+      if (!document.fullscreenElement) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
